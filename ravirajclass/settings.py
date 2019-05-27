@@ -24,7 +24,7 @@ SECRET_KEY = '+&r$r9u5@2r&$)jh2$5pfbv=rdg@ume!r5btk&_-b4d(mv5xvc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'ravirajclass.pythonanywhere.com', u'127.0.0.1']
+ALLOWED_HOSTS = [u'ravirajclass.pythonanywhere.com', u'127.0.0.1','192.168.1.104']
 
 # Application definition
 
@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Custom apps
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +54,7 @@ ROOT_URLCONF = 'ravirajclass.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,11 +113,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = u'/home/ravirajclass/ravirajclass/media'
+MEDIA_ROOT = u'media/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = u'/home/ravirajclass/ravirajclass/static'
+# STATIC_ROOT = u'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
